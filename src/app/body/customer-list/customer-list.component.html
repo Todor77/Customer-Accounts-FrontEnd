@@ -1,1 +1,33 @@
-<p>customer-list works!</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Account Number</th>
+        <th scope="col">Account Balance</th>
+        <th scope="col">Transactions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customers">
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.account.accountNumber }}</td>
+        <td>{{ customer.initialCredit }}</td>
+        <td>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Transaction Id</th>
+                    <th scope="col">Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let transaction of customer.account.transactions">
+                    <td>{{ transaction.transactionId }}</td>
+                    <td>{{ transaction.amount }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
