@@ -1,0 +1,11 @@
+<form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" formControlName="customerId">
+    </div>
+    <div>
+        <label for="initialCredit">Initial Credit:</label>
+        <input type="text" id="initialCredit" formControlName="initialCredit">
+    </div>
+    <button type="submit" [disabled]="accountForm.invalid">Create Account</button>
+</form>
