@@ -19,11 +19,15 @@ export class CustomerService {
   }
 
   getCustomerAccount(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}/account`);
+    return this.http.get(`${this.baseUrl}`);
   }
 
   getCustomerTransactions(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}/transactions`);
+  }
+
+  openAccount(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}`,data)
   }
 }
 
