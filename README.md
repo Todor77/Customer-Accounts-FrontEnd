@@ -1,6 +1,13 @@
 # Customer-Accounts-FrontEnd
 Front-end representation on Customer-Accounts repo
 
+####Project Setup
+
+1.npm install , or yarn install
+2. ng serve
+3. project is running on http://localhost:4200/ and you are redirected to /customers.
+4. follow the description on the Create Account page, because the prject is working just in those two cases for now.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.10.
 
