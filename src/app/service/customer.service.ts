@@ -6,12 +6,12 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class CustomerService {
-  private baseUrl = 'http://localhost:8080/customers';
+  private baseUrl = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) { }
 
   getCustomers(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get(`${this.baseUrl + 'customers'}`);
   }
 
   getCustomer(id: number): Observable<any> {
@@ -27,7 +27,7 @@ export class CustomerService {
   }
 
   openAccount(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}`,data)
+    return this.http.post(`${this.baseUrl + 'v2/openAccount'}`,data)
   }
 }
 

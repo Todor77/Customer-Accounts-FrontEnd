@@ -1,3 +1,4 @@
+Now is just working with the id 2 , thats the id from the second customer, needs to be improved. , amount is a number . 10000
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
     <div>
         <label for="customerId">Customer ID:</label>
@@ -9,3 +10,7 @@
     </div>
     <button type="submit" [disabled]="accountForm.invalid">Create Account</button>
 </form>
+
+<ng-container *ngIf="successMessage != ''">
+    <div>{{successMessage}}</div>
+</ng-container>

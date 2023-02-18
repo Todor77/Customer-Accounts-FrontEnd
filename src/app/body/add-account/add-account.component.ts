@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../../service/customer.service";
+import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'app-add-account',
@@ -18,6 +19,8 @@ export class AddAccountComponent implements OnInit {
       });
   }
 
+  successMessage: string = '';
+
   ngOnInit(): void {
   }
 
@@ -26,19 +29,30 @@ export class AddAccountComponent implements OnInit {
 
   if(this.accountForm.get('customerId')?.value && this.accountForm.get('initialCredit')?.value) {
     const data = {
-      customer_id: this.accountForm.get('customerId')?.value,
-      initial_credit: this.accountForm.get('initialCredit')?.value
+      customerId: this.accountForm.get('customerId')?.value,
+      initialAmount: this.accountForm.get('initialCredit')?.value
     };
+    this.openAccount1(data);
+    }
+  }
 
+  openAccount(data: any) {
     this.customerService.openAccount(data).subscribe(data => {
       console.log('Account created successfully', data);
-      // TODO: handle success response
+      this.successMessage = data.toString();
+    }, error => {
+      console.log(error);
     });
   }
 
-
-
-
-
+  openAccount1(data: any) {
+    this.customerService.openAccount(data).pipe(
+        catchError(error => {
+          this.successMessage = 'An error occurred while fetching data';
+          return of(error);
+        })
+    ).subscribe(response => {
+      this.successMessage = 'Successfully created account';
+    });
   }
 }
